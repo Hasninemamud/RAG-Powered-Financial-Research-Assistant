@@ -18,9 +18,7 @@ from .memory import ConversationMemory
 from .llm import call_llm
 
 
-# -----------------------------
-# Abstractions (DIP: depend on interfaces, not implementations)
-# -----------------------------
+
 
 class AnswerGenerator:
     """Abstract answer generator interface."""
@@ -48,9 +46,9 @@ class LLMAnswerGenerator(AnswerGenerator):
         return call_llm(question, results)
 
 
-# -----------------------------
+
 # Application setup
-# -----------------------------
+
 
 app = FastAPI(title="JVAI Policy Chatbot")
 templates = Jinja2Templates(directory="templates")
@@ -60,9 +58,9 @@ memory = ConversationMemory()
 retriever: Retriever | None = None
 
 
-# -----------------------------
+
 # Request models (SRP: each endpoint has a clear schema)
-# -----------------------------
+
 
 class IngestReq(BaseModel):
     pdf_path: str
@@ -75,9 +73,9 @@ class AskReq(BaseModel):
     use_llm: bool = False
 
 
-# -----------------------------
+
 # Endpoints
-# -----------------------------
+
 
 @app.post("/upload_pdf")
 async def upload_pdf(file: UploadFile = File(...)):
@@ -154,16 +152,7 @@ def ask(req: AskReq):
     return {"answer": answer, "results": results}
 
 
-# -----------------------------
-# UI routes
-# -----------------------------
 
-@app.get("/", response_class=HTMLResponse)
-def index(request: Request):
-    """
-    Render homepage with PDF upload + question form.
-    """
-    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post("/ask_ui", response_class=HTMLResponse)
