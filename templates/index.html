@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JVAI Policy Chatbot</title>
+</head>
+<body>
+  <h1>Policy Chatbot</h1>
+
+  <h2>Upload PDF</h2>
+  <form action="/upload_pdf" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".pdf" required />
+    <button type="submit">Upload & Ingest</button>
+  </form>
+
+  <h2>Ask a Question</h2>
+  <form action="/ask_ui" method="post">
+    <input type="text" name="question" placeholder="Enter your question..." style="width:300px" required />
+    <label><input type="checkbox" name="use_llm" value="true" /> Use LLM</label>
+    <button type="submit">Ask</button>
+  </form>
+
+  {% if answer %}
+    <h3>Answer</h3>
+    <p>{{ answer }}</p>
+    <h4>Sources</h4>
+    <ul>
+      {% for r in results %}
+        <li>Page {{ r.page }} (score {{ r.score }}): {{ r.snippet }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
