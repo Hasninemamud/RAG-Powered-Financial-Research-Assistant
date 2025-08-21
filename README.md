@@ -81,6 +81,18 @@ source .venv/bin/activate # Mac/Linux
 pip install -r requirements.txt
 ```
 
+### 4. Build the vector index (ingestion)
+
+```bash
+python -m src.ingest --pdf data/policy.pdf
+```
+
+## This creates:
+
+```
+models/index.faiss
+models/store.json
+```
 ### 4. Configure environment
 
 Create a `.env` file:
