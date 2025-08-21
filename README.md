@@ -1,9 +1,4 @@
-Perfect timing 🚀 — let’s draft a **clear, professional README-style documentation** for your project.
-This will explain **what it is, how it works, how to run it, and how to use it**.
-
----
-
-# 📘 JVAI Policy Chatbot — Documentation
+# 📘 RAG-Powered Financial Research Assistant— Documentation
 
 ## 📖 Overview
 
