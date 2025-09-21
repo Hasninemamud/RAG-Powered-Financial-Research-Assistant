@@ -2,7 +2,7 @@
 
 ## 📖 Overview
 
-The **JVAI Policy Chatbot** is an intelligent document assistant that allows users to:
+The **Financial-Research-Assistant Chatbot** is an intelligent document assistant that allows users to:
 
 * Upload **PDF policy documents**
 * Ask **questions in natural language**
